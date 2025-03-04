@@ -1,0 +1,93 @@
+{
+  "name": "vswkt",
+  "displayName": "vswkt",
+  "description": "visualize wkt right in vscode",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.97.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:wktViewer.showMap"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "wktViewer.showMap",
+        "title": "WKT: Show on Map"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "wktViewer.showMap",
+        "key": "ctrl+shift+w",
+        "mac": "cmd+shift+w",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "wktViewer.showMap",
+          "when": "editorTextFocus",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/geojson": "^7946.0.16",
+    "@types/jest": "^29.5.14",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "~20.17.22",
+    "@types/vscode": "^1.97.0",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.24.2",
+    "eslint": "^9.19.0",
+    "jest": "^29.7.0",
+    "npm-run-all": "^4.1.5",
+    "ts-jest": "^29.2.6",
+    "typescript": "^5.7.3",
+    "vscode-test": "^1.6.1"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.0.8",
+    "wellknown": "^0.5.0"
+  },
+  "author": {
+    "name": "Pablo Sanchidrian Herrera",
+    "url": "https://www.pablosanchidrian.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PabloSanchi/vscode-wkt-viewer"
+  },
+  "license": "Apache-2.0",
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
