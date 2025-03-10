@@ -2,7 +2,7 @@
   "name": "vswkt",
   "displayName": "vswkt",
   "description": "visualize wkt right in vscode",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.97.0"
   },
@@ -84,6 +84,7 @@
     "type": "git",
     "url": "https://github.com/PabloSanchi/vscode-wkt-viewer"
   },
+  "publisher": "PabloSanchi",
   "license": "Apache-2.0",
   "pnpm": {
     "ignoredBuiltDependencies": [
