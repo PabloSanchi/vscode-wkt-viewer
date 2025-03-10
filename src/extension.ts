@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import { parseWKT } from './parser';
+import { getWebviewContent } from './webview';
 
 export function activate(context: vscode.ExtensionContext) {
 	let currentPanel: vscode.WebviewPanel | undefined = undefined;
@@ -60,10 +61,7 @@ export function activate(context: vscode.ExtensionContext) {
 		currentPanel.reveal(vscode.ViewColumn.Two);
 		
 		try {
-			const htmlPath = vscode.Uri.file(path.join(context.extensionPath, 'src', 'webview', 'index.html'));
-			const htmlContent = await vscode.workspace.fs.readFile(htmlPath);
-			currentPanel.webview.html = htmlContent.toString();
-
+			currentPanel.webview.html = getWebviewContent();
 			const geoJson = parseWKT(text.trim());
 			currentPanel.webview.postMessage({ 
 				type: 'updateMap',

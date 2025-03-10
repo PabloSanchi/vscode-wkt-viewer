@@ -1,3 +1,4 @@
+export const getWebviewContent = () => `
 <!DOCTYPE html>
 <html>
 <head>
@@ -176,4 +177,4 @@
         });
     </script>
 </body>
-</html> 
+</html>`;
